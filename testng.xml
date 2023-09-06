@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Swag_Labs_Application_Web_Automation">
+    <listeners>
+        <listener class-name="TestComponents.Listeners"></listener>
+    </listeners>
+    <test name="Swag labs application test cases">
+        <classes>
+            <class name="Tests.LoginTest"></class>
+            <class name="Tests.OrderItem"></class>
+            <class name="Tests.CancelOrder"></class>
+            <class name="Tests.PlaceOrderACheapestItem"></class>
+            <class name="Tests.RemoveOneItemAndPlaceOrder"></class>
+            <class name="Tests.HamburgerIconTest"></class>
+            <class name="Tests.ClickLinkedIn_getTextFromBottom"></class>
+        </classes>
+    </test>
+</suite>

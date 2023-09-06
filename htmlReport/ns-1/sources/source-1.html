@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AbstractComponent</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">AbstractComponents</a>
+</div>
+
+<h1>Coverage Summary for Class: AbstractComponent (AbstractComponents)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AbstractComponent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25.8%
+  </span>
+  <span class="absValue">
+    (8/31)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package AbstractComponents;
+&nbsp;
+&nbsp;import org.apache.commons.io.FileUtils;
+&nbsp;import org.openqa.selenium.*;
+&nbsp;import org.openqa.selenium.support.ui.ExpectedConditions;
+&nbsp;import org.openqa.selenium.support.ui.WebDriverWait;
+&nbsp;import java.io.*;
+&nbsp;import java.time.Duration;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Set;
+&nbsp;
+&nbsp;public class AbstractComponent {
+&nbsp;    static WebDriver driver;
+&nbsp;    String parentWindowHandle;
+&nbsp;    List&lt;String&gt; window;
+&nbsp;    public JavascriptExecutor js;
+<b class="fc">&nbsp;    public AbstractComponent(WebDriver driver){</b>
+<b class="fc">&nbsp;        this.driver=driver;</b>
+<b class="fc">&nbsp;        parentWindowHandle = driver.getWindowHandle();</b>
+<b class="fc">&nbsp;        window = new ArrayList&lt;&gt;(driver.getWindowHandles());</b>
+<b class="fc">&nbsp;        js = (JavascriptExecutor) driver;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    public void waitForElementToAppear(By FindBy) {
+<b class="nc">&nbsp;        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));</b>
+<b class="nc">&nbsp;        wait.until(ExpectedConditions.visibilityOfElementLocated(FindBy));</b>
+&nbsp;    }
+&nbsp;    public static String takeScreenshot(String fileName) throws IOException {
+<b class="fc">&nbsp;        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);</b>
+<b class="fc">&nbsp;        FileUtils.copyFile(src, new File(&quot;C:\\Users\\nikita.soni\\IdeaProjects\\PageObjectModel\\target\\Screenshots\\&quot; + fileName));</b>
+<b class="fc">&nbsp;        return fileName;</b>
+&nbsp;    }
+&nbsp;    public void goToTab0(){
+<b class="nc">&nbsp;        driver.switchTo().window(window.get(0));</b>
+&nbsp;    }
+&nbsp;    public void goToTab1() {
+<b class="nc">&nbsp;        Set&lt;String&gt; windowHandles = driver.getWindowHandles();</b>
+<b class="nc">&nbsp;        for (String handle : windowHandles) {</b>
+<b class="nc">&nbsp;            if (!handle.equals(parentWindowHandle)) {</b>
+<b class="nc">&nbsp;                driver.switchTo().window(handle);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;    public void goToTab2() {
+<b class="nc">&nbsp;        Set&lt;String&gt; windowHandles2 = driver.getWindowHandles();</b>
+<b class="nc">&nbsp;        for (String handle : windowHandles2) {</b>
+<b class="nc">&nbsp;            if (!handle.equals(parentWindowHandle) &amp;&amp; !handle.equals(driver.getWindowHandle())) {</b>
+<b class="nc">&nbsp;                driver.switchTo().window(handle);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;    public void goToTab3(){
+<b class="nc">&nbsp;        Set&lt;String&gt; windowHandles3 = driver.getWindowHandles();</b>
+<b class="nc">&nbsp;        String lastHandle = &quot;&quot;;</b>
+<b class="nc">&nbsp;        for(String handle : windowHandles3){</b>
+<b class="nc">&nbsp;            lastHandle = handle;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        if(!lastHandle.isEmpty()){</b>
+<b class="nc">&nbsp;            driver.switchTo().window(lastHandle);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void scrollPage(){
+<b class="nc">&nbsp;        js.executeScript(&quot;window.scrollTo(0, 500)&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-09-04 21:20</div>
+</div>
+</body>
+</html>

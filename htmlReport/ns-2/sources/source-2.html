@@ -1,0 +1,211 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > HomePage</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">Pages</a>
+</div>
+
+<h1>Coverage Summary for Class: HomePage (Pages)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HomePage</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    17.1%
+  </span>
+  <span class="absValue">
+    (7/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package Pages;
+&nbsp;
+&nbsp;import AbstractComponents.AbstractComponent;
+&nbsp;import org.openqa.selenium.*;
+&nbsp;import org.openqa.selenium.interactions.Actions;
+&nbsp;import org.openqa.selenium.support.FindBy;
+&nbsp;import org.openqa.selenium.support.PageFactory;
+&nbsp;import org.openqa.selenium.support.ui.Select;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.time.Duration;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public class HomePage extends AbstractComponent {
+&nbsp;    WebDriver driver;
+&nbsp;    public HomePage(WebDriver driver){
+<b class="fc">&nbsp;        super(driver);</b>
+<b class="fc">&nbsp;        this.driver=driver;</b>
+<b class="fc">&nbsp;        PageFactory.initElements(driver, this);</b>
+<b class="fc">&nbsp;        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));</b>
+&nbsp;    }
+&nbsp;    @FindBy(id=&quot;react-burger-menu-btn&quot;)
+&nbsp;    WebElement hamBurgerIcon;
+<b class="fc">&nbsp;    By hbIcon = By.id(&quot;react-burger-menu-btn&quot;);</b>
+&nbsp;    @FindBy(xpath = &quot;//a[contains(text(), &#39;All Items&#39;)]&quot;)
+&nbsp;    WebElement hamBurger_AllItems;
+&nbsp;    @FindBy(xpath = &quot;//a[contains(text(), &#39;About&#39;)]&quot;)
+&nbsp;    WebElement hamBurger_About;
+&nbsp;    @FindBy(xpath = &quot;//a[contains(text(), &#39;Logout&#39;)]&quot;)
+&nbsp;    WebElement hamBurger_Logout;
+&nbsp;    @FindBy(xpath = &quot;//a[contains(text(), &#39;Reset App State&#39;)]&quot;)
+&nbsp;    WebElement hamBurger_ResetAppState;
+<b class="fc">&nbsp;    By hbList = By.cssSelector(&quot;.bm-menu&quot;);</b>
+&nbsp;    @FindBy(css=&quot;.product_sort_container&quot;)
+&nbsp;    WebElement productsFilter;
+&nbsp;    @FindBy(css=&quot;.inventory_item&quot;)
+&nbsp;    List&lt;WebElement&gt; products;
+&nbsp;    @FindBy(css=&quot;.inventory_item_name&quot;)
+&nbsp;    List&lt;WebElement&gt; productName;
+&nbsp;    @FindBy(xpath = &quot;//button[contains(text(),&#39;OK&#39;)]&quot;)
+&nbsp;    WebElement okBtn;
+<b class="fc">&nbsp;    By okButton = By.xpath(&quot;//button[contains(text(),&#39;OK&#39;)]&quot;);</b>
+&nbsp;    @FindBy(xpath = &quot;//span[contains(text(), &#39;Resources&#39;)]&quot;)
+&nbsp;    WebElement Resources;
+&nbsp;    @FindBy(xpath = &quot;//span[contains(text(), &#39;Documentation&#39;)]&quot;)
+&nbsp;    WebElement documentation;
+&nbsp;
+&nbsp;    @FindBy(xpath = &quot;//button[contains(text(), &#39;Add to cart&#39;)]&quot;)
+&nbsp;    WebElement AddToCartBtn;
+&nbsp;    @FindBy(xpath = &quot;//button[contains(text(), &#39;Get Started&#39;)]&quot;)
+&nbsp;    WebElement getStarted;
+&nbsp;    @FindBy(css = &quot;a[href=&#39;https://www.linkedin.com/company/sauce-labs/&#39;]&quot;)
+&nbsp;    WebElement linkedInBtn;
+&nbsp;    @FindBy(css = &quot;div[class=&#39;footer_copy&#39;]&quot;)
+&nbsp;    WebElement text;
+&nbsp;    public void clickOntHamBurgerIcon(){
+<b class="nc">&nbsp;        waitForElementToAppear(hbIcon);</b>
+<b class="nc">&nbsp;        hamBurgerIcon.click();</b>
+&nbsp;    }
+&nbsp;    public void getHowToUseSauceDemoApplication() throws IOException {
+<b class="nc">&nbsp;        waitForElementToAppear(hbList);</b>
+<b class="nc">&nbsp;        Actions action = new Actions(driver);</b>
+<b class="nc">&nbsp;        action.keyDown(Keys.CONTROL).click(hamBurger_About).build().perform();</b>
+<b class="nc">&nbsp;        goToTab1();</b>
+<b class="nc">&nbsp;        waitForElementToAppear(okButton);</b>
+<b class="nc">&nbsp;        okBtn.click();</b>
+<b class="nc">&nbsp;        action.moveToElement(Resources).perform();</b>
+<b class="nc">&nbsp;        documentation.click();</b>
+<b class="nc">&nbsp;        goToTab2();</b>
+<b class="nc">&nbsp;        getStarted.click();</b>
+<b class="nc">&nbsp;        goToTab3();</b>
+<b class="nc">&nbsp;        takeScreenshot(&quot;HowToUseSauceDemo.png&quot;);</b>
+<b class="nc">&nbsp;        scrollPage();</b>
+&nbsp;    }
+&nbsp;       public void selectFilterForProduct(){
+&nbsp;        //WebElement dropdown = driver.findElement(By.cssSelector(&quot;.product_sort_container&quot;));
+<b class="nc">&nbsp;        Select select = new Select(productsFilter);</b>
+<b class="nc">&nbsp;        select.selectByVisibleText(&quot;Price (low to high)&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void getCheapestProduct(){
+<b class="nc">&nbsp;        List&lt;Double&gt; prices = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for(WebElement element : products){</b>
+<b class="nc">&nbsp;            String priceText = element.findElement(By.cssSelector(&quot;.inventory_item_price&quot;)).getText();</b>
+<b class="nc">&nbsp;            Double price = Double.parseDouble(priceText.replace(&quot;$&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;            prices.add(price);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        int lowestPrice = prices.indexOf(Collections.min(prices));</b>
+<b class="nc">&nbsp;        productName.get(lowestPrice).click();</b>
+<b class="nc">&nbsp;        AddToCartBtn.click();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    public void clickOnLinkedInBtn() throws IOException {
+<b class="nc">&nbsp;        js.executeScript(&quot;arguments[0].scrollIntoView(true);&quot;, linkedInBtn);</b>
+<b class="nc">&nbsp;        linkedInBtn.click();</b>
+<b class="nc">&nbsp;        goToTab1();</b>
+<b class="nc">&nbsp;        takeScreenshot(&quot;LinkedIn.png&quot;);</b>
+&nbsp;    }
+&nbsp;    public void getTextMessage(){
+<b class="nc">&nbsp;        js.executeScript(&quot;arguments[0].scrollIntoView(true);&quot;, text);</b>
+<b class="nc">&nbsp;        String texts = text.getText();</b>
+<b class="nc">&nbsp;        String getText = texts.replace(&quot;2023 Sauce Labs.&quot;, &quot;&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(getText);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-09-04 21:20</div>
+</div>
+</body>
+</html>
